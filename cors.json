@@ -1,0 +1,11 @@
+[
+    {
+      "origin": [
+          "http://localhost:4200", 
+          "https://my-workshop-app-b9a13.firebaseapp.com/login?returnUrl=%2Faccount"
+        ],
+      "method": ["GET", "POST", "PUT", "DELETE"],
+      "responseHeader": ["Content-Type"],
+      "maxAgeSeconds": 3600
+    }
+]

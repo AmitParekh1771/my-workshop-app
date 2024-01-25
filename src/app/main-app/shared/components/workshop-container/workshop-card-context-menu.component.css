@@ -1,0 +1,51 @@
+
+.workshop-status-option-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0.7em 1.4em;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    background-color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.workshop-status-option-item:hover {
+    background-color: #e6e6e6;
+}
+
+.workshop-status-option-item.danger-bg {
+    color: white;
+    background-color: #b00020;
+}
+
+.workshop-status-option-item.danger-bg:hover {
+    background-color: #96001b;
+}
+
+.workshop-status-option-item.launch-bg {
+    color: white;
+    background-color: #01a299;
+}
+
+.workshop-status-option-item.launch-bg:hover {
+    background-color: #018a82;
+}
+
+.workshop-status-option-block {
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.workshop-status-option-svg {
+    min-width: 2ch;
+    font-family: 'Fa 400', sans-serif;
+}
+
+.workshop-status-option-solid-svg {
+    min-width: 2ch;
+    font-family: 'Fa solid 900', sans-serif;
+}

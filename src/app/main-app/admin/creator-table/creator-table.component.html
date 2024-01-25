@@ -1,0 +1,62 @@
+<div class="table-container">
+    <div class="table-head">
+        <div class="table-head-name">Creator Table</div>
+        <div class="csv-svg" (click)="getCSV()"></div>
+    </div>
+    <div class="search-container">
+        <input 
+        [(ngModel)]="queryString"
+        (keyup.enter)="filter()"
+        type="text" 
+        autocomplete="off"
+        class="field-input w-input" 
+        name="search" 
+        placeholder="Search" 
+        id="creatorSearch"/>
+        <div (click)="filter()" class="search-svg"></div>
+    </div>
+    <div class="table-main-block" 
+    #tableMainBlock 
+    (contextmenu)="onContextmenu($event)">
+        <div class="table-row table-header" 
+        [style.width]="tableMainBlock.scrollWidth + 'px'">
+            <div class="creator-sr-no">CID</div>
+            <div class="creator-name">Name</div>
+            <div class="creator-email-id">Email Id</div>
+            <div class="creator-workshop">Created Workshops</div>
+        </div>
+        <div class="table-row" 
+        data-creator-item
+        [attr.data-creator-cid]="creator.id"
+        [attr.data-creator-name]="creator.name"
+        [attr.data-creator-email]="creator.email"
+        [style.width]="tableMainBlock.scrollWidth + 'px'"
+        *ngFor="let creator of (creators$ | async)">
+            <div class="creator-sr-no">{{ creator.id }}</div>
+            <div class="creator-name">{{ creator.name }}</div>
+            <div class="creator-email-id">{{ creator.email }}</div>
+            <div class="creator-workshop">
+                <div *ngFor="let wid of creator.wids">{{ wid }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="table-paginator">
+        <div class="item-numbers-container">
+            <div class="item-numbers-text">Items per page</div>
+            <input 
+            [(ngModel)]="pageSize"
+            (change)="queryChanged()"
+            type="text" 
+            autocomplete="off"
+            class="item-numbers-input w-input" 
+            name="item-numbers" 
+            placeholder="10" 
+            id="item-numbers"/>
+        </div>
+        <div class="current-page-container">
+            <button type="button" class="svg paginator-svg" (click)="paginateBefore()"></button>
+            <div class="page-number">{{ currentPage }}</div>
+            <button type="button" class="svg paginator-svg" (click)="paginateAfter()"></button>
+        </div>
+    </div>
+</div>

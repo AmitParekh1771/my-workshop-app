@@ -1,0 +1,15 @@
+<div class="score-container" *ngIf="scores; else loaderContainer">
+    <div class="score-card" *ngFor="let score of scores">
+        <div class="score-number">{{ score.number | number: '1.0-1' }}</div>
+        <div class="score-title">{{ score.title }}</div>
+    </div>
+</div>
+
+<ng-template #loaderContainer>
+    <div class="score-container">
+        <div [ngStyle]="{ 'height': '156px', 'width': '100%', 'minWidth': '100px' }" class="score-card loader"></div>
+        <div [ngStyle]="{ 'height': '156px', 'width': '100%', 'minWidth': '100px' }" class="score-card loader"></div>
+        <div [ngStyle]="{ 'height': '156px', 'width': '100%', 'minWidth': '100px' }" class="score-card loader"></div>
+        <div [ngStyle]="{ 'height': '156px', 'width': '100%', 'minWidth': '100px' }" class="score-card loader"></div>
+    </div>
+</ng-template>

@@ -1,0 +1,15 @@
+<div class="field-container">
+    <ng-content select=".field-label"></ng-content>
+    <div class="field-block">
+        <div class="focusing-area">
+            <div>
+                <ng-content select=".multi-select-container"></ng-content>
+                <ng-content select=".field-input"></ng-content>
+            </div>
+            <div>
+                <ng-content select=".field-svg"></ng-content>
+            </div>
+        </div>
+        <ng-content select=".select-option-container"></ng-content>
+    </div>
+</div>

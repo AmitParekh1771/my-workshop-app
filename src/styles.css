@@ -1,0 +1,260 @@
+/* You can add global styles to this file, and also import other style files */
+
+.app-body {
+    position: relative;
+    z-index: 9;
+    min-height: 80vh;
+}
+
+.section {
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+
+.padding-50-top-bottom {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.padding-50-bottom {
+    padding-bottom: 50px;
+}
+
+.outer-container-1360 {
+    position: relative;
+    width: 100%;
+    max-width: 1360px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.outer-container-864 {
+    width: 100%;
+    max-width: 864px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.non-decorated-link {
+    text-decoration: none;
+}
+
+.user-select-none {
+    user-select: none;
+}
+
+.darken-hover:hover {
+    filter: saturate(0.9);
+}
+
+.brighten-hover:hover {
+    filter: saturate(1.1);
+}
+
+.danger { color: #b00020; }
+
+.danger-bg {
+    color: white;
+    background-color: #b00020;
+}
+
+.gray-bg {
+    background-color: #dfdfdf;
+}
+
+.vertical-line {
+    width: 1px;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    -ms-grid-row-align: stretch;
+    align-self: stretch;
+    background-color: #333;
+}
+
+*:focus-visible { outline: none; }
+
+.best-seller {
+    color: #fff;
+    background-color: #cacf41;
+}
+
+.trending {
+    color: #fff;
+    background-color: #26c926;
+}
+
+.popular {
+    color: #fff;
+    background-color: #ca34ac;
+}
+
+.white-smoke-bg {
+    background-color: #f6f6f6;
+}
+
+.loader {
+    background-color: #f6f6f6;
+    width: 100%;
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, .5) 50%,
+      rgba(255, 255, 255, 0) 60%
+    ) #f6f6f6;
+    background-size: 200% 100%;
+    background-position-x: 180%;
+    animation: 1s loading ease-in-out infinite;
+}
+  
+@keyframes loading {
+    to {
+        background-position-x: -20%;
+    }
+}
+
+
+.spinner-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid #333;
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 0.5s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
+
+.mat-tooltip-danger {
+    background: #b00020;
+    color: white;
+    font-size: 12px;
+    padding: 0.7em 1.4em !important;
+    margin-top: 0px !important;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.raise-z-index { z-index: 2 !important; }
+
+
+.two-column-flex {
+    display: -ms-grid;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+}
+
+.three-column-flex {
+    display: -ms-grid;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+}
+
+.custom-dialog-container .mat-dialog-container { padding: 0; }
+
+.dialog-backdrop {
+    background-color: rgba(51, 51, 51, 0.5);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.svg { font-family: 'Fa solid 900', sans-serif; }
+
+.focus-outline { outline: 2px solid #333 !important; }
+
+.highlight-border-bottom { border-bottom: 20px solid #333 !important; }
+
+.highlight-border-top { border-top: 20px solid #333 !important; }
+
+.add-segment-container {
+    position: relative;
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: center;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    border: 1px dashed #333;
+    background-color: #dfdfdf;
+    cursor: pointer;
+}
+
+.add-segment-container:hover {
+    background-color: #f6f6f6;
+}
+
+@font-face {
+    font-family: 'Fa v4compatibility';
+    src: url('./assets/font-awesome/fa-v4compatibility.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fa 400';
+    src: url('./assets/font-awesome/fa-regular-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fa brands 400';
+    src: url('./assets/font-awesome/fa-brands-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fa solid 900';
+    src: url('./assets/font-awesome/fa-solid-900.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.cdk-global-scrollblock { overflow-y: hidden !important; }
+
+.cdk-visually-hidden { display: none; }
+
+.mat-calendar-arrow{border-top-color:rgba(0,0,0,.54)}.mat-datepicker-toggle,.mat-datepicker-content .mat-calendar-next-button,.mat-datepicker-content .mat-calendar-previous-button{color:rgba(0,0,0,.54)}.mat-calendar-table-header-divider::after{background:rgba(0,0,0,.12)}.mat-calendar-table-header,.mat-calendar-body-label{color:rgba(0,0,0,.54)}.mat-calendar-body-cell-content,.mat-date-range-input-separator{color:rgba(0,0,0,.87);border-color:transparent}.mat-calendar-body-disabled>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){color:rgba(0,0,0,.38)}.mat-form-field-disabled .mat-date-range-input-separator{color:rgba(0,0,0,.38)}.mat-calendar-body-in-preview{color:rgba(0,0,0,.24)}.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){border-color:rgba(0,0,0,.38)}.mat-calendar-body-disabled>.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){border-color:rgba(0,0,0,.18)}.mat-calendar-body-in-range::before{background:rgba(63,81,181,.2)}.mat-calendar-body-comparison-identical,.mat-calendar-body-in-comparison-range::before{background:rgba(249,171,0,.2)}.mat-calendar-body-comparison-bridge-start::before,[dir=rtl] .mat-calendar-body-comparison-bridge-end::before{background:linear-gradient(to right, rgba(63, 81, 181, 0.2) 50%, rgba(249, 171, 0, 0.2) 50%)}.mat-calendar-body-comparison-bridge-end::before,[dir=rtl] .mat-calendar-body-comparison-bridge-start::before{background:linear-gradient(to left, rgba(63, 81, 181, 0.2) 50%, rgba(249, 171, 0, 0.2) 50%)}.mat-calendar-body-in-range>.mat-calendar-body-comparison-identical,.mat-calendar-body-in-comparison-range.mat-calendar-body-in-range::after{background:#a8dab5}.mat-calendar-body-comparison-identical.mat-calendar-body-selected,.mat-calendar-body-in-comparison-range>.mat-calendar-body-selected{background:#46a35e}.mat-calendar-body-selected{background-color:#3f51b5;color:#fff}.mat-calendar-body-disabled>.mat-calendar-body-selected{background-color:rgba(63,81,181,.4)}.mat-calendar-body-today.mat-calendar-body-selected{box-shadow:inset 0 0 0 1px #fff}.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),.cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),.cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){background-color:rgba(63,81,181,.3)}.mat-datepicker-content{box-shadow:0px 2px 4px -1px rgba(0, 0, 0, 0.2),0px 4px 5px 0px rgba(0, 0, 0, 0.14),0px 1px 10px 0px rgba(0, 0, 0, 0.12);background-color:#fff;color:rgba(0,0,0,.87)}.mat-datepicker-content.mat-accent .mat-calendar-body-in-range::before{background:rgba(255,64,129,.2)}.mat-datepicker-content.mat-accent .mat-calendar-body-comparison-identical,.mat-datepicker-content.mat-accent .mat-calendar-body-in-comparison-range::before{background:rgba(249,171,0,.2)}.mat-datepicker-content.mat-accent .mat-calendar-body-comparison-bridge-start::before,.mat-datepicker-content.mat-accent [dir=rtl] .mat-calendar-body-comparison-bridge-end::before{background:linear-gradient(to right, rgba(255, 64, 129, 0.2) 50%, rgba(249, 171, 0, 0.2) 50%)}.mat-datepicker-content.mat-accent .mat-calendar-body-comparison-bridge-end::before,.mat-datepicker-content.mat-accent [dir=rtl] .mat-calendar-body-comparison-bridge-start::before{background:linear-gradient(to left, rgba(255, 64, 129, 0.2) 50%, rgba(249, 171, 0, 0.2) 50%)}.mat-datepicker-content.mat-accent .mat-calendar-body-in-range>.mat-calendar-body-comparison-identical,.mat-datepicker-content.mat-accent .mat-calendar-body-in-comparison-range.mat-calendar-body-in-range::after{background:#a8dab5}.mat-datepicker-content.mat-accent .mat-calendar-body-comparison-identical.mat-calendar-body-selected,.mat-datepicker-content.mat-accent .mat-calendar-body-in-comparison-range>.mat-calendar-body-selected{background:#46a35e}.mat-datepicker-content.mat-accent .mat-calendar-body-selected{background-color:#ff4081;color:#fff}.mat-datepicker-content.mat-accent .mat-calendar-body-disabled>.mat-calendar-body-selected{background-color:rgba(255,64,129,.4)}.mat-datepicker-content.mat-accent .mat-calendar-body-today.mat-calendar-body-selected{box-shadow:inset 0 0 0 1px #fff}.mat-datepicker-content.mat-accent .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),.mat-datepicker-content.mat-accent .cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),.mat-datepicker-content.mat-accent .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){background-color:rgba(255,64,129,.3)}.mat-datepicker-content.mat-warn .mat-calendar-body-in-range::before{background:rgba(244,67,54,.2)}.mat-datepicker-content.mat-warn .mat-calendar-body-comparison-identical,.mat-datepicker-content.mat-warn .mat-calendar-body-in-comparison-range::before{background:rgba(249,171,0,.2)}.mat-datepicker-content.mat-warn .mat-calendar-body-comparison-bridge-start::before,.mat-datepicker-content.mat-warn [dir=rtl] .mat-calendar-body-comparison-bridge-end::before{background:linear-gradient(to right, rgba(244, 67, 54, 0.2) 50%, rgba(249, 171, 0, 0.2) 50%)}.mat-datepicker-content.mat-warn .mat-calendar-body-comparison-bridge-end::before,.mat-datepicker-content.mat-warn [dir=rtl] .mat-calendar-body-comparison-bridge-start::before{background:linear-gradient(to left, rgba(244, 67, 54, 0.2) 50%, rgba(249, 171, 0, 0.2) 50%)}.mat-datepicker-content.mat-warn .mat-calendar-body-in-range>.mat-calendar-body-comparison-identical,.mat-datepicker-content.mat-warn .mat-calendar-body-in-comparison-range.mat-calendar-body-in-range::after{background:#a8dab5}.mat-datepicker-content.mat-warn .mat-calendar-body-comparison-identical.mat-calendar-body-selected,.mat-datepicker-content.mat-warn .mat-calendar-body-in-comparison-range>.mat-calendar-body-selected{background:#46a35e}.mat-datepicker-content.mat-warn .mat-calendar-body-selected{background-color:#f44336;color:#fff}.mat-datepicker-content.mat-warn .mat-calendar-body-disabled>.mat-calendar-body-selected{background-color:rgba(244,67,54,.4)}.mat-datepicker-content.mat-warn .mat-calendar-body-today.mat-calendar-body-selected{box-shadow:inset 0 0 0 1px #fff}.mat-datepicker-content.mat-warn .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),.mat-datepicker-content.mat-warn .cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),.mat-datepicker-content.mat-warn .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){background-color:rgba(244,67,54,.3)}
+
+
+.cdk-overlay-container,.cdk-global-overlay-wrapper{pointer-events:none;top:0;left:0;height:100%;width:100%}.cdk-overlay-container{position:fixed;z-index:1000}.cdk-overlay-container:empty{display:none}.cdk-global-overlay-wrapper{display:flex;position:absolute;z-index:1000}.cdk-overlay-pane{position:absolute;pointer-events:auto;box-sizing:border-box;z-index:1000;display:flex;max-width:100%;max-height:100%}.cdk-overlay-backdrop{position:absolute;top:0;bottom:0;left:0;right:0;z-index:1000;pointer-events:auto;-webkit-tap-highlight-color:transparent;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);opacity:0}.cdk-overlay-backdrop.cdk-overlay-backdrop-showing{opacity:1}.cdk-high-contrast-active .cdk-overlay-backdrop.cdk-overlay-backdrop-showing{opacity:.6}.cdk-overlay-dark-backdrop{background:rgba(0,0,0,.32)}.cdk-overlay-transparent-backdrop,.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing{opacity:0}.cdk-overlay-connected-position-bounding-box{position:absolute;z-index:1000;display:flex;flex-direction:column;min-width:1px;min-height:1px}

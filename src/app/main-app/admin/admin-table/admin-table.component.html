@@ -1,0 +1,58 @@
+<div class="table-container">
+    <div class="table-head">
+        <div class="table-head-name">Admin Table</div>
+        <div class="csv-svg" (click)="getCSV()"></div>
+    </div>
+    <div class="search-container">
+        <input 
+        [(ngModel)]="queryString"
+        (keyup.enter)="filter()"
+        type="text" 
+        autocomplete="off"
+        class="field-input w-input" 
+        name="search" 
+        placeholder="Search" 
+        id="adminSearch"/>
+        <div (click)="filter()" class="search-svg"></div>
+    </div>
+    <div class="table-main-block" 
+    #tableMainBlock >
+        <div class="table-row table-header" 
+        [style.width]="tableMainBlock.scrollWidth + 'px'">
+            <div class="admin-sr-no">AID</div>
+            <div class="admin-name">Name</div>
+            <div class="admin-email-id">Email Id</div>
+            <div class="admin-workshop">Managed Workshops</div>
+        </div>
+        <div class="table-row" 
+        data-admin-item
+        [attr.data-admin-uid]="admin.id"
+        [attr.data-admin-name]="admin.name"
+        [attr.data-admin-email]="admin.email"
+        [style.width]="tableMainBlock.scrollWidth + 'px'"
+        *ngFor="let admin of (admins$ | async)">
+            <div class="admin-sr-no">{{ admin.id }}</div>
+            <div class="admin-name">{{ admin.name }}</div>
+            <div class="admin-email-id">{{ admin.email }}</div>
+            <div class="admin-workshop">
+                <div *ngFor="let wid of admin.wids">{{ wid }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="table-paginator">
+        <div class="item-numbers-container">
+            <div class="item-numbers-text">Items per page</div>
+            <input 
+            type="text" 
+            autocomplete="off"
+            class="item-numbers-input w-input" 
+            name="item-numbers" 
+            placeholder="*" />
+        </div>
+        <div class="current-page-container">
+            <button type="button" class="svg paginator-svg"></button>
+            <div class="page-number">1</div>
+            <button type="button" class="svg paginator-svg"></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,350 @@
+
+.workshop-cover {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat, no-repeat;
+}
+
+.workshop-cover > div {
+    min-height: 250px;
+}
+
+
+.workshop-hero-description {
+    max-width: 600px;
+    color: #f6f6f6;
+}
+
+.workshop-hero-title {
+    margin-bottom: 10px;
+    font-size: 48px;
+    font-weight: 800;
+    text-shadow: 0 4px 0 #000;
+}
+
+.workshop-hero-rating-and-author {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    text-shadow: 0 2px 0 #000;
+}
+
+.workshop-hero-tag {
+    max-width: 150px;
+    padding: 5px 16px;
+    box-shadow: 0 5px #000;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.workshop-hero-video-play-button {
+    position: absolute;
+    left: auto;
+    top: auto;
+    right: 0%;
+    bottom: 0%;
+    z-index: 1;
+    padding-right: 18px;
+    padding-left: 22px;
+    border-radius: 50%;
+    background-color: #333;
+    box-shadow: 0 5px 10px 0 rgba(51, 51, 51, 0.5);
+    font-family: 'Fa solid 900', sans-serif;
+    font-size: 32px;
+    text-align: center;
+    text-shadow: 0 3px 0 #000;
+}
+
+/* course section */
+
+.workshop-main-container {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-align: start;
+    -webkit-align-items: start;
+    -ms-flex-align: start;
+    align-items: start;
+    grid-auto-columns: 1fr;
+    column-gap: 25px;
+    z-index: 1;
+    position: relative;
+    user-select: none;
+    -ms-grid-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+}
+
+
+.workshop-progress-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+    grid-column: span 2;
+    z-index: 3;
+    background-color: #fff;
+    overflow: hidden;
+    width: 100%;
+    padding: 25px 0;
+}
+
+.light-background {
+    background-color: #f6f6f6;
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.background-progress-bar {
+    border-radius: 13px;
+    height: 23px;
+    -webkit-transition: width 1000ms cubic-bezier(.215, .61, .355, 1);
+    transition: width 1000ms cubic-bezier(.215, .61, .355, 1);
+}
+
+.dark-progress-text {
+    position: absolute;
+    width: 100%;
+    line-height: 23px;
+    color: #ffffff;
+    mix-blend-mode: difference;
+    text-align: center;
+}
+
+.video-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 123px;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.workshop-course-container {
+    position: relative;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 300px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+}
+
+.content-segment {
+    position: relative;
+    border: 0px solid transparent;
+}
+
+.content-segment-title {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.segment-content-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dfdfdf;
+    border-bottom: unset;
+}
+
+.segment-content-item {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px 20px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    background-color: transparent;
+    border-top: 0px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    cursor: pointer;
+}
+
+.segment-content-item:hover,
+.course-event-container:hover 
+{
+    background-color: #f6f6f6 !important;
+}
+
+.content-item-svg {
+    font-family: 'Fa solid 900', sans-serif;
+}
+
+.content-item-title {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    word-break: break-word;
+}
+
+
+.course-event-container {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px 20px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    border: 1px solid #dfdfdf;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.lock-container {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    background-color: hsla(0, 0%, 100%, 0.5);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    cursor: not-allowed;
+}
+
+.lock-message {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+
+/* course section */
+
+
+
+.workshop-hero-instructor {
+    text-align: center;
+}
+
+.workshop-hero-rating {
+    text-align: center;
+}
+
+
+.video-unavailable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dfdfdf;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+}
+
+.registration-cta {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.enroll-btn {
+    padding: 8px 16px;
+    background-color: #5600e8;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+}
+.enroll-btn:hover {
+    background-color: #4501bc;
+}
+
+
+@media screen and (max-width: 991px) {
+    .workshop-hero-title {
+        font-size: 36px;
+    }
+    
+    .workshop-progress-container {
+        grid-column: span 1;
+    }
+    .workshop-main-container {
+        -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    }
+    .workshop-course-container {
+        margin-top: 25px;
+    }
+
+}
+
+
+@media screen and (max-width: 767px) {
+    .workshop-hero-video-play-button {
+        padding-right: 14px;
+        padding-left: 16px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .workshop-hero-title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .workshop-hero-rating-and-author {
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .workshop-hero-tag {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+

@@ -1,0 +1,23 @@
+<div class="workshop-setup-option">
+    <div class="select-container">
+        <div class="select-block">{{ value?.name | titlecase }}</div>
+        <div class="setup-select-svg violet-bg" 
+            (click)="showOptions = !showOptions"></div>
+        <div class="select-option-container" 
+            *ngIf="showOptions" (click)="showOptions = false;">
+            <div class="fixed-bg"></div>
+            <div class="select-option-block">
+                <div class="select-option-item"
+                    *ngFor="let _status of status"
+                    [class.active-select-option-item]="_status == value!"
+                    (click)="selectOption(_status)">{{ _status.name | titlecase }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="action-buttons">
+        <button title="Launch Again" type="button" class="setup-select-svg launch-bg" (click)="launchAgain.emit()"></button>
+        <button title="Delete Workshop" type="button" class="setup-select-svg danger-bg" (click)="deleteWorkshop.emit()"></button>
+        <button title="Revert Changes" type="button" [disabled]="disableSaveAndRevert" class="setup-select-svg revert-bg" (click)="revertChanges.emit()"></button>
+        <button title="Save Changes" type="button" [disabled]="disableSaveAndRevert" class="setup-select-svg violet-bg" (click)="saveChanges.emit()"></button>
+    </div>
+</div>

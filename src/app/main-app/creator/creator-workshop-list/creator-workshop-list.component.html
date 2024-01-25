@@ -1,0 +1,95 @@
+<div class="section padding-50-top-bottom wf-section">
+    <div class="outer-container-864">
+        <app-score-container 
+        [scores]="[
+            {title: 'Total Workshops', number: workshopService.creatorTotalWorkshopCount},
+            {title: 'Active Workshops', number: workshopService.creatorWorkshopCount['ACTIVE']},
+            {title: 'Average Rating', number: workshopService.creatorAverageRating},
+            {title: 'Students Taught', number: workshopService.creatorStudentsTaught}
+        ]"></app-score-container>
+    </div>
+</div>
+<div statusChange>
+    <div class="section padding-50-top-bottom wf-section">
+        <div class="outer-container-1360">
+            <div class="workshop-top-bar">
+                <div class="workshop-status">
+                    <div class="workshop-status-title">Active Workshops</div>
+                </div>
+                <a routerLink="active" class="show-all-box w-button">Show all</a>
+            </div>
+            <div class="workshop-container" *ngIf="(activeWorkshops$ | async) as activeWorkshops; else activeWorkshopsLoader">
+                <app-workshop-card 
+                    *ngFor="let workshop of activeWorkshops"
+                    [workshop]="workshop"
+                    [routerLink]="['./', workshop.id, workshop.metaData.title.toLowerCase().split(' ').join('-')]"
+                    cardType="CREATOR"
+                    [attr.data-title]="workshop.metaData.title"
+                    [attr.data-workshop-id]="workshop.id"
+                    [attr.data-status-id]="workshop.status.id">
+                </app-workshop-card>
+            </div>
+            <ng-template #activeWorkshopsLoader>
+                <div class="workshop-container">
+                    <app-workshop-card></app-workshop-card>
+                    <app-workshop-card></app-workshop-card>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="section padding-50-top-bottom wf-section">
+        <div class="outer-container-1360">
+            <div class="workshop-top-bar">
+                <div class="workshop-status">
+                    <div class="workshop-status-title">Archived Workshops</div>
+                </div>
+                <a routerLink="archived" class="show-all-box w-button">Show all</a>
+            </div>
+            <div class="workshop-container" *ngIf="(archivedWorkshops$ | async) as archivedWorkshops; else archivedWorkshopsLoader">
+                <a (click)="createWorkshop()" class="add-workshop-container non-decorated-link w-inline-block"></a>
+                <app-workshop-card 
+                    *ngFor="let workshop of archivedWorkshops"
+                    [workshop]="workshop"
+                    [routerLink]="['./', workshop.id, workshop.metaData.title.toLowerCase().split(' ').join('-')]"
+                    cardType="CREATOR"
+                    [attr.data-title]="workshop.metaData.title"
+                    [attr.data-workshop-id]="workshop.id"
+                    [attr.data-status-id]="workshop.status.id">
+                </app-workshop-card>
+            </div>
+            <ng-template #archivedWorkshopsLoader>
+                <div class="workshop-container">
+                    <app-workshop-card></app-workshop-card>
+                    <app-workshop-card></app-workshop-card>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="section padding-50-top-bottom wf-section">
+        <div class="outer-container-1360">
+            <div class="workshop-top-bar">
+                <div class="workshop-status">
+                    <div class="workshop-status-title">Completed Workshops</div>
+                </div>
+                <a routerLink="completed" class="show-all-box w-button">Show all</a>
+            </div>
+            <div class="workshop-container" *ngIf="(completedWorkshops$ | async) as completedWorkshops; else completedWorkshopsLoader">
+                <app-workshop-card 
+                    *ngFor="let workshop of completedWorkshops"
+                    [workshop]="workshop"
+                    [routerLink]="['./', workshop.id, workshop.metaData.title.toLowerCase().split(' ').join('-')]"
+                    cardType="CREATOR"
+                    [attr.data-title]="workshop.metaData.title"
+                    [attr.data-workshop-id]="workshop.id"
+                    [attr.data-status-id]="workshop.status.id">
+                </app-workshop-card>
+            </div>
+            <ng-template #completedWorkshopsLoader>
+                <div class="workshop-container">
+                    <app-workshop-card></app-workshop-card>
+                    <app-workshop-card></app-workshop-card>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

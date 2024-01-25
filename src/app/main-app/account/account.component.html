@@ -1,0 +1,8 @@
+<div class="app-body" *ngIf="(user$ | async) as user; else accountLoader">
+    <app-user-info-card [user]="user"></app-user-info-card>
+    <app-user-details-form [user]="user"></app-user-details-form>
+</div>
+<ng-template #accountLoader>
+    <app-user-info-card></app-user-info-card>
+    <app-user-details-form></app-user-details-form>
+</ng-template>

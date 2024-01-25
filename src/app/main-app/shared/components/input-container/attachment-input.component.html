@@ -1,0 +1,30 @@
+<app-input-template>
+    <label [for]="name" class="field-label">
+        <ng-content select=".label"></ng-content>
+    </label>
+    <ng-container class="field-input">
+        <input 
+            class="field-input w-input" 
+            tabindex="-1"
+            #uriInput
+            [type]="type" 
+            [name]="name"
+            [disabled]="disabled"
+            [placeholder]="placeholder" 
+            [autocomplete]="autocomplete"
+            [ngModel]="value?.uri"
+            (blur)="uriChange.emit(uriInput.value)"
+            (keyup.enter)="uriChange.emit(uriInput.value)"
+            />
+    </ng-container>
+    <ng-container class="field-svg">
+        <label [for]="name + ' uploader'" class="field-svg"></label>
+        <input 
+            type="file" 
+            [name]="name + ' uploader'" 
+            [id]="name + ' uploader'" 
+            [disabled]="disabled"
+            [style.display]="'none'"
+            (change)="attachItem($event)">
+    </ng-container>
+</app-input-template>

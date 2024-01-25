@@ -1,0 +1,15 @@
+<div class="context-menu-container">
+    <div class="context-menu-bg" 
+    (mousedown)="closeContextMenu()"></div>
+    <div class="context-menu-component" 
+        [ngStyle]="{
+            'color': configStyles.color,
+            'backgroundColor': configStyles.backgroundColor,
+            'padding': configStyles.padding,
+            'maxWidth': configStyles.maxWidth,
+            'minWidth': configStyles.minWidth
+        }"
+        (contextmenu)="$event.preventDefault()">
+        <ng-template appCodeInsertion></ng-template>
+    </div>
+</div>

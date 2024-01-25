@@ -1,0 +1,153 @@
+<button type="button" 
+class="meta-data-edit-button w-button"
+(click)="showMetaEditContainer = true;"
+></button>
+<div class="meta-data-edit-container" 
+    [class.meta-edit-active]="showMetaEditContainer">
+    <div class="meta-data-edit-bg"
+        (click)="showMetaEditContainer = false;"></div>
+    <div class="meta-data-edit-block" [formGroup]="metaData">
+        <div class="meta-edit-head">
+            <div class="meta-edit-head-text">Workshop Metadata</div>
+            <button type="button" class="svg" (click)="showMetaEditContainer = false;"></button>
+        </div>
+        <app-text-input
+            name="title"
+            placeholder="The Complete Digital Marketing Workshop - 12 Courses in 1"
+            autocomplete="off"
+            formControlName="title"
+            >
+            <ng-container class="label">
+                Title<span class="danger">*</span>
+            </ng-container>
+        </app-text-input>
+        <!-- <app-multi-select-input
+            name="creator"
+            placeholder="Graham Bell"
+            *ngIf="(creatorList$ | async) as creatorList; else creatorLoader"
+            autocomplete="off"
+            [selectItems]="creatorList"
+            formControlName="creators"
+            >
+            <ng-container class="label">
+                Creator<span class="danger">*</span>
+            </ng-container>
+        </app-multi-select-input>
+        <ng-template #creatorLoader>
+            <div>
+                <label [style.fontSize]="'0.85em'">Creator<span class="danger">*</span></label>
+                <div [style.height]="'37.8px'" class="loader"></div>
+            </div>
+        </ng-template> -->
+        <div class="two-column-flex">
+            <app-single-select-input
+                name="tag"
+                autocomplete="off"
+                placeholder="POPULAR"
+                [selectItems]="tagList"
+                formControlName="tag"
+                >
+                <ng-container class="label">
+                    Tag
+                </ng-container>
+            </app-single-select-input>
+            <app-text-input
+                name="landingPage"
+                autocomplete="off"
+                placeholder="https://landingpage.com"
+                formControlName="landingPage"
+                >
+                <ng-container class="label">
+                    Landing Page
+                </ng-container>
+            </app-text-input>
+        </div>
+        <div class="three-column-flex">
+            <app-date-input
+                name="startDate"
+                placeholder="DD / MM / YYYY"
+                autocomplete="off"
+                formControlName="startDate"
+                >
+                <ng-container class="label">
+                    Start Date<span class="danger">*</span>
+                </ng-container>
+            </app-date-input>
+            <app-date-input
+                name="endDate"
+                placeholder="DD / MM / YYYY"
+                autocomplete="off"
+                formControlName="endDate"
+                >
+                <ng-container class="label">
+                    End Date
+                </ng-container>
+            </app-date-input>
+            <app-text-input
+                name="duration"
+                placeholder="360"
+                autocomplete="off"
+                formControlName="duration"
+                >
+                <ng-container class="label">
+                    Duration <span class="small-font">(in seconds)</span>
+                </ng-container>
+            </app-text-input>
+        </div>
+        <div class="three-column-flex">
+            <app-text-input
+                name="creditPoints"
+                autocomplete="off"
+                placeholder="100"
+                formControlName="creditPoints"
+                >
+                <ng-container class="label">Credit Points</ng-container>
+            </app-text-input>
+            <app-text-input
+                name="baseRating"
+                autocomplete="off"
+                placeholder="4.0"
+                formControlName="baseRating"
+                >
+                <ng-container class="label">Base Rating</ng-container>
+            </app-text-input>
+            <app-text-input
+                name="baseStudentCount"
+                autocomplete="off"
+                placeholder="3000"
+                formControlName="baseStudentCount"
+                >
+                <ng-container class="label">Base Student Count</ng-container>
+            </app-text-input>
+        </div>
+        <div class="three-column-flex">
+            <app-color-input
+                name="bgColor"
+                autocomplete="off"
+                placeholder="#123456"
+                formControlName="bgColor"
+                >
+                <ng-container class="label">Background Color</ng-container>
+            </app-color-input>
+            <app-attachment-input
+                name="coverImage"
+                autocomplete="off"
+                placeholder="https://cloudinary.com/sample.jpg"
+                formControlName="coverImage"
+                (attach)="uploadImage($event)"
+                >
+                <ng-container class="label">Cover Image</ng-container>
+            </app-attachment-input>
+            <app-attachment-input
+                name="coverVideo"
+                autocomplete="off"
+                placeholder="/videos/123456"
+                formControlName="coverVideo"
+                (attach)="uploadVideo($event)"
+                (uriChange)="getVideo($event)"
+                >
+                <ng-container class="label">Cover Video</ng-container>
+            </app-attachment-input>
+        </div>
+    </div>
+</div>

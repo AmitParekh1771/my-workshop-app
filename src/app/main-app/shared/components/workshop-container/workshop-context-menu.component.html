@@ -1,0 +1,112 @@
+
+<div class="context-menu-block">
+    <app-text-input
+        name="contentTitle"
+        autocomplete="off"
+        placeholder="Introduction to digital marketing"
+        [(ngModel)]="contextMenuItem!.item.title"
+        (change)="emitChange()"
+        >
+        <ng-container class="label">
+            <div class="context-menu-field-label">Content title<span class="danger">*</span></div>
+        </ng-container>
+    </app-text-input>
+    <app-attachment-input
+        name="videoUri"
+        autocomplete="off"
+        placeholder="/videos/1234"
+        [ngModel]="contextMenuItem!.item"
+        (attach)="uploadVideo($event)"
+        (uriChange)="getVideo($event)"
+        *ngIf="contextMenuItem!.type == 'VIDEO'"
+        >
+        <ng-container class="label">
+            <div class="context-menu-field-label">Video Uri<span class="danger">*</span></div>
+        </ng-container>
+    </app-attachment-input>
+    <app-attachment-input
+        name="attachmentUrl"
+        autocomplete="off"
+        placeholder="https://firebasestorage.googleapis.com"
+        [ngModel]="contextMenuItem!.item"
+        (attach)="uploadFile($event)"
+        (uriChange)="setFile($event)"
+        *ngIf="contextMenuItem!.type == 'ATTACHMENT'"
+        >
+        <ng-container class="label">
+            <div class="context-menu-field-label">Attachment Url<span class="danger">*</span></div>
+        </ng-container>
+    </app-attachment-input>
+    <app-text-input
+        name="eventUrl"
+        autocomplete="off"
+        placeholder="https://calendar.google.com"
+        *ngIf="contextMenuItem!.type == 'EVENT'"
+        [(ngModel)]="contextMenuItem!.item.embedUrl"
+        (change)="emitChange()"
+        >
+        <ng-container class="label">
+            <div class="context-menu-field-label">Event Url<span class="danger">*</span></div>
+        </ng-container>
+    </app-text-input>
+    <app-text-input
+        name="contentDuration"
+        autocomplete="off"
+        placeholder="3600"
+        [(ngModel)]="contextMenuItem!.item.duration"
+        (change)="emitChange()"
+        *ngIf="contextMenuItem!.type == 'VIDEO' || contextMenuItem!.type == 'EVENT'"
+        >
+        <ng-container class="label">
+            <div class="context-menu-field-label">Duration (in seconds)</div>
+        </ng-container>
+    </app-text-input>
+    <div class="context-menu-item" *ngIf="contextMenuItem!.type == 'SEGMENT'">
+        <div class="append-content-text">Insert Into</div>
+        <div class="context-menu-insert-flex">
+            <div class="context-menu-insert svg" (click)="insert('VIDEO')"></div>
+            <div class="context-menu-insert svg" (click)="insert('EVENT')"></div>
+            <div class="context-menu-insert svg" (click)="insert('ATTACHMENT')"></div>
+        </div>
+    </div>
+    <div class="context-menu-item" *ngIf="contextMenuItem">
+        <div class="append-content-text">Insert After</div>
+        <div class="context-menu-insert-flex">
+            <div *ngIf="contextMenuItem!.type == 'SEGMENT'; then block else contentItem;"></div>
+            <ng-template #block>
+                <div class="context-menu-insert" (click)="insert('SEGMENT')"><span class="svg"></span> Add Segment</div>
+            </ng-template>
+            <ng-template #contentItem>
+                <div class="context-menu-insert svg" (click)="insert('VIDEO')"></div>
+                <div class="context-menu-insert svg" (click)="insert('EVENT')"></div>
+                <div class="context-menu-insert svg" (click)="insert('ATTACHMENT')"></div>
+            </ng-template>
+        </div>
+    </div>
+    <app-text-input
+        name="lockMessage"
+        autocomplete="off"
+        placeholder="This content will unlock on 15th Jan"
+        [(ngModel)]="contextMenuItem!.status.lockMessage"
+        (change)="emitChange()"
+        >
+        <ng-container class="label">
+            <div class="lock-check-block">
+                <div class="check-box-svg"
+                    (click)="contextMenuItem!.status.isLocked = !contextMenuItem!.status.isLocked; emitChange()">
+                    {{ contextMenuItem!.status.isLocked ? '' : ''}}
+                </div>
+                <div class="context-menu-field-label" 
+                    (click)="contextMenuItem!.status.isLocked = true; emitChange()">
+                    Lock Content
+                </div>
+            </div>
+        </ng-container>
+    </app-text-input>
+    <button 
+        type="button" 
+        class="danger-bg delete-btn" 
+        (click)="remove()"
+        ><span class="svg"></span> Delete
+    </button>
+</div>

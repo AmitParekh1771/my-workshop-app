@@ -1,0 +1,70 @@
+<div class="table-container">
+    <div class="table-head">
+        <div class="table-head-name">Workshop Table</div>
+        <div class="csv-svg" (click)="getCSV()"></div>
+    </div>
+    <div class="search-container">
+        <input 
+        [(ngModel)]="queryString"
+        (keyup.enter)="filter()"
+        type="text" 
+        autocomplete="off"
+        class="field-input w-input" 
+        name="workshopSearch" 
+        placeholder="Search" 
+        id="workshopSearch"/>
+        <div (click)="filter()" class="search-svg"></div>
+    </div>
+    <div class="table-main-block" 
+        #tableMainBlock
+        (contextmenu)="onContextmenu($event)">
+        <div class="table-row table-header" 
+        [style.width]="tableMainBlock.scrollWidth + 'px'">
+            <div class="workshop-sr-no">WID</div>
+            <div class="workshop-title">Title</div>
+            <div class="workshop-status">Status</div>
+            <div class="workshop-creators">Creators</div>
+            <div class="workshop-folder-uri">Folder Uri</div>
+            <div class="workshop-start-date">Start Date</div>
+            <div class="workshop-end-date">End Date</div>
+            <div class="workshop-credit-points">Credit Points</div>
+        </div>
+        <div class="table-row" 
+        [style.width]="tableMainBlock.scrollWidth + 'px'"
+        data-workshop-item
+        [attr.data-workshop-wid]="workshop.id"
+        [attr.data-workshop-title]="workshop.metaData.title"
+        *ngFor="let workshop of (workshops$ | async)">
+            <div class="workshop-sr-no">{{ workshop.id }}</div>
+            <div class="workshop-title">{{ workshop.metaData.title }}</div>
+            <div class="workshop-status">{{ workshop.status.name }}</div>
+            <div class="workshop-creators">
+                <div *ngFor="let creator of workshop.creators">{{ creator.name }}</div>
+            </div>
+            <div class="workshop-folder-uri">{{ workshop.folderUri }}</div>
+            <div class="workshop-start-date">{{ (workshop.metaData.startDate.seconds * 1000) | date: 'mediumDate' }}</div>
+            <div class="workshop-end-date">{{ (workshop.metaData.endDate ? workshop.metaData.endDate.seconds * 1000 : 0) | date: 'mediumDate'}}</div>
+            <div class="workshop-credit-points">{{ workshop.metaData.creditPoints }}</div>
+        </div>
+    </div>
+    <div class="table-paginator">
+        <div class="item-numbers-container">
+            <div class="item-numbers-text">Items per page</div>
+            <input 
+            (change)="queryChanged()"
+            [(ngModel)]="pageSize"
+            type="text" 
+            autocomplete="off"
+            class="item-numbers-input w-input" 
+            maxlength="256" 
+            name="item-numbers" 
+            placeholder="10" 
+            id="workshop-pageSize"/>
+        </div>
+        <div class="current-page-container">
+            <button type="button" class="svg paginator-svg" (click)="paginateBefore()"></button>
+            <div class="page-number">{{ currentPage }}</div>
+            <button type="button" class="svg paginator-svg" (click)="paginateAfter()"></button>
+        </div>
+    </div>
+</div>

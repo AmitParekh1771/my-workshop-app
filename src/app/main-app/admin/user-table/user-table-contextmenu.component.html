@@ -1,0 +1,41 @@
+<div class="context-menu-block">
+    <app-text-input
+        name="email"
+        autocomplete="off"
+        [readonly]="true"
+        [ngModel]="data.email"
+        placeholder="parekhamit04@gmail.com"
+        >
+        <ng-container class="label">
+            <span class="context-menu-label">Email</span>
+        </ng-container>
+    </app-text-input>
+    <app-text-input
+        name="addWorkshop"
+        autocomplete="off"
+        placeholder="FOMPXtCsYJUcSRRau1XW"
+        [(ngModel)]="addWid"
+        >
+        <ng-container class="label">
+            <span class="context-menu-label">Add Workshop</span>
+        </ng-container>
+    </app-text-input>
+    <app-text-input
+        name="removeWorkshop"
+        autocomplete="off"
+        placeholder="UdaVWAqqsU21G2b8hrCv"
+        [(ngModel)]="removeWid"
+        >
+        <ng-container class="label">
+            <span class="context-menu-label">Remove Workshop</span>
+        </ng-container>
+    </app-text-input>
+    <div (click)="makeCreator()" 
+    class="context-menu-button make-creator darken-hover">Make creator</div>
+    <div class="context-menu-button-container">
+        <div (click)="updateUser()" 
+        class="context-menu-button save darken-hover">Save changes</div>
+        <div (click)="deleteUser()" 
+        class="context-menu-button delete darken-hover">Delete account</div>
+    </div>
+</div>

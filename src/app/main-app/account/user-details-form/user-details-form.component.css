@@ -1,0 +1,56 @@
+
+
+.account-form-block {
+    display: -ms-grid;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+}
+
+
+.revert-changes-button {
+    background-color: #f6f6f6;
+    color: #333;
+}
+
+.save-changes-button {
+    background-color: #5600e8;
+}
+
+.save-changes-button:disabled,
+.revert-changes-button:disabled 
+{
+    filter: saturate(0.5) !important;
+    cursor: not-allowed !important;
+}
+
+.span-2 {
+    grid-column: span 2/ span 2;
+}
+
+.span-3 {
+    grid-column: span 3/ span 3;
+}
+
+.span-6 {
+    grid-column: span 6/ span 6;
+}
+
+@media screen and (max-width: 991px) {
+    .account-form-block {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+}

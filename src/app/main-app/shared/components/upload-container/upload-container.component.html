@@ -1,0 +1,30 @@
+<div class="upload-container wf-section" *ngIf="(uploadService.uploads$ | async) as uploadFiles" [hidden]="!uploadFiles.length">
+  <div class="upload-header">
+    <div class="upload-text">Uploading</div>
+    <div class="upload-svg-box" (click)="toggle(itemContainer)"><span [style.transform]="collapse ? 'rotate(180deg)' : 'rotate(0deg)'"></span></div>
+  </div>
+  <div class="upload-item-container" #itemContainer>
+    <div class="upload-item-block" *ngFor="let uploadFile of uploadFiles; let i = index">
+      <div class="upload-item-text">{{ uploadFile.upload.options.metadata?.name }} - ({{ uploadFile.bytesSent | fileSize }} / {{ uploadFile.bytesTotal | fileSize }})</div>
+      <div class="upload-svg-box" (click)="pauseOrResume(uploadFile, false)"><span>{{ uploadFile.isComplete ? '' : (uploadFile.isPaused ? '' : '')}}</span></div>
+      <div class="upload-svg-box" (click)="pauseOrResume(uploadFile, true)">
+        <span class="x-svg"></span>
+        <span class="progress-svg">
+          <svg viewBox="0 0 36 36">
+            <path class="circle-bg"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path class="circle"
+              [style.stroke-dasharray]="(uploadFile.bytesSent*100)/(uploadFile.bytesTotal || 100) + ', 100'"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="prompt-container" [class.popup-active]="showPopup">
+    <div class="fixed-bg" (click)="onClose()"></div>
+    <div class="prompt-perspective-block">
+        <div class="prompt-block"
+        [style.transform]="showPopup ? 'translate3d(0px, 0px, 0px) rotate3d(1, 0, 0, 0deg)' : 'translate3d(0px, -50px, 0px) rotate3d(1, 0, 0, 10deg)'">
+            <div class="prompt-title">{{ title }}</div>
+            <div>{{ warningMessage }}</div>
+            <div [hidden]="!confirmMessage">
+                Confirm by typing <span [style.color]="highlightColor">{{ confirmMessage }}</span>
+            </div>
+            <div [hidden]="!confirmMessage" class="field-block">
+                <input 
+                    #confirmationInput
+                    type="text" 
+                    class="field-input" 
+                    name="prompt-input" 
+                    (paste)="$event.preventDefault()"
+                    [placeholder]="confirmMessage"
+                    autocomplete="off"
+                    id="prompt-input"/>
+            </div>
+            <div class="two-column-flex action-button">
+                <button type="button" 
+                class="prompt-button gray-bg darken-hover"
+                (click)="onClose()">Cancel</button>
+                <button type="button" 
+                class="prompt-button darken-hover"
+                (click)="onAction()"
+                [ngStyle]="{
+                    'backgroundColor': highlightColor,
+                    'color': highlightComplementColor
+                }">{{ type }}</button>
+            </div>
+        </div>
+    </div>
+</div>

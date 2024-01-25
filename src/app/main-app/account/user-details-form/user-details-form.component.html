@@ -1,0 +1,164 @@
+<div class="section padding-50-top-bottom">
+    <div class="w-form">
+        <form [formGroup]="form"
+            (ngSubmit)="submit()"
+            (keydown.enter)="$event.preventDefault();"
+            id="wf-form-account-form" 
+            name="wf-form-account-form" 
+            class="outer-container-864 account-form-block"> 
+
+            <app-text-input 
+                class="span-3"
+                name="firstName"
+                [matTooltip]="errorMessage(form.get('firstName'))"
+                matTooltipClass="mat-tooltip-danger"
+                matTooltipPosition="below"
+                [matTooltipDisabled]="form.get('firstName')!.valid"
+                placeholder="John"
+                autocomplete="off"
+                formControlName="firstName"
+                [error]="form.get('firstName')!.invalid"
+                >
+                <ng-container class="label">First Name<span class="danger">*</span></ng-container>
+            </app-text-input>
+
+            <app-text-input 
+                class="span-3"
+                name="lastName"
+                [matTooltip]="errorMessage(form.get('lastName'))"
+                matTooltipClass="mat-tooltip-danger"
+                matTooltipPosition="below"
+                [matTooltipDisabled]="form.get('lastName')!.valid"
+                placeholder="Smith"
+                autocomplete="off"
+                formControlName="lastName"
+                [error]="form.get('lastName')!.invalid"
+                >
+                <ng-container class="label">Last Name<span class="danger">*</span></ng-container>
+            </app-text-input>
+
+            <app-text-input 
+                class="span-6"
+                name="email"
+                placeholder="johnsmith@gmail.com"
+                [readonly]="true"
+                autocomplete="off"
+                formControlName="email"
+                >
+                <ng-container class="label">Email<span class="danger">*</span></ng-container>
+            </app-text-input>
+
+            <app-date-input 
+                class="span-2"
+                name="dateOfBirth"
+                placeholder="DD / MM / YYYY"
+                autocomplete="off"
+                formControlName="dateOfBirth"
+                >
+                <ng-container class="label">Date of Birth</ng-container>
+            </app-date-input>
+
+            <app-single-select-input 
+                class="span-2"
+                name="gender"
+                autocomplete="off"
+                placeholder="Male"
+                [selectItems]="formData.gender"
+                formControlName="gender"
+                >
+                <ng-container class="label">Gender</ng-container>
+            </app-single-select-input>
+
+            <app-single-select-input
+                class="span-2"
+                name="profession"
+                autocomplete="off"
+                placeholder="Student"
+                [selectItems]="formData.profession"
+                formControlName="profession"
+                >
+                <ng-container class="label">Profession</ng-container>
+            </app-single-select-input>
+
+            <app-multi-select-input 
+                class="span-6"
+                name="areaOfInterest"
+                autocomplete="off"
+                placeholder="Web Development"
+                [selectItems]="formData.areaOfInterest"
+                formControlName="areaOfInterest"
+                >
+                <ng-container class="label">Area of Interest</ng-container>
+            </app-multi-select-input>
+
+            <app-single-select-input 
+                *ngIf="(countries$ | async) as countries; else countryLoader"
+                class="span-2"
+                name="country"
+                autocomplete="nope"
+                placeholder="India"
+                [selectItems]="countries"
+                formControlName="country"
+                >
+                <ng-container class="label">Country</ng-container>
+            </app-single-select-input>
+            <ng-template #countryLoader>
+                <div  class="span-2">
+                    <label [style.fontSize]="'0.85em'">Country</label>
+                    <div [style.height]="'37.8px'" class="loader"></div>
+                </div>
+            </ng-template>
+
+            <app-single-select-input 
+                *ngIf="(states$ | async) as states; else stateLoader"
+                class="span-2"
+                name="state"
+                autocomplete="nope"
+                [placeholder]="states[0]?.name || 'N/A'"
+                [selectItems]="states"
+                formControlName="state"
+                >
+                <ng-container class="label">State</ng-container>
+            </app-single-select-input>
+            <ng-template #stateLoader>
+                <div class="span-2">
+                    <label [style.fontSize]="'0.85em'">State</label>
+                    <div [style.height]="'37.8px'" class="loader"></div>
+                </div>
+            </ng-template>
+
+            <app-single-select-input 
+                *ngIf="(cities$ | async) as cities; else cityLoader"
+                class="span-2"
+                name="city"
+                autocomplete="nope"
+                [placeholder]="cities[0]?.name || 'N/A'"
+                [selectItems]="cities"
+                formControlName="city"
+                >
+                <ng-container class="label">City</ng-container>
+            </app-single-select-input>
+            <ng-template #cityLoader>
+                <div class="span-2">
+                    <label [style.fontSize]="'0.85em'">City</label>
+                    <div [style.height]="'37.8px'" class="loader"></div>
+                </div>
+            </ng-template>
+
+            <button 
+                type="button"
+                (click)="reset()"
+                [disabled]="disableButton"
+                class="revert-changes-button w-button darken-hover span-2">
+                Revert Changes
+            </button>
+
+            <button 
+                type="submit" 
+                [disabled]="disableButton"
+                class="save-changes-button w-button darken-hover span-2">
+                Save Changes
+            </button>
+        </form>
+    </div>
+</div>

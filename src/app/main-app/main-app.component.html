@@ -1,0 +1,13 @@
+<div class="body">
+    <app-side-bar [(isActive)]="showMenu"></app-side-bar>
+    <div class="main-container">
+        <app-header (showMenu)="showMenu = true;"></app-header>
+        <router-outlet></router-outlet>
+        <ng-container *ngIf="showSpinner">
+            <div class="spinner-container">
+                <span class="spinner"></span>
+            </div>
+        </ng-container>
+    </div>
+    <app-upload-container></app-upload-container>
+</div>

@@ -1,0 +1,15 @@
+<div class="prompt-container" [class.popup-active]="showPopup">
+    <div class="fixed-bg" (click)="showPopup = false;"></div>
+    <div class="prompt-perspective-block">
+        <div class="prompt-block"
+        [style.transform]="showPopup ? 'translate3d(0px, 0px, 0px) rotate3d(1, 0, 0, 0deg)' : 'translate3d(0px, -50px, 0px) rotate3d(1, 0, 0, 10deg)'">
+            <div class="prompt-title">
+                <span>{{ title }}</span>
+                <span class="close-alert svg" (click)="showPopup = false;"></span>
+            </div>
+            <div>
+                {{ alertMessage }}
+            </div>
+        </div>
+    </div>
+</div>

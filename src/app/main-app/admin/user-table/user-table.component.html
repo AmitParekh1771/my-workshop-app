@@ -1,0 +1,72 @@
+<div class="table-container">
+    <div class="table-head">
+        <div class="table-head-name">User Table</div>
+        <div class="csv-svg" (click)="getCSV()"></div>
+    </div>
+    <div class="search-container">
+        <input 
+        [(ngModel)]="queryString"
+        (keyup.enter)="filter()"
+        type="text" 
+        autocomplete="off"
+        class="field-input w-input" 
+        name="search" 
+        placeholder="Search" 
+        id="userSearch"/>
+        <div (click)="filter()" class="search-svg"></div>
+    </div>
+    <div class="table-main-block" 
+    #tableMainBlock 
+    (contextmenu)="onContextmenu($event)">
+        <div class="table-row table-header" 
+        [style.width]="tableMainBlock.scrollWidth + 'px'">
+            <div class="user-sr-no">UID</div>
+            <div class="user-first-name">First Name</div>
+            <div class="user-last-name">Last Name</div>
+            <div class="user-email-id">Email Id</div>
+            <div class="user-enrolled-workshop">Enrolled Workshops</div>
+            <div class="user-profession">Profession</div>
+            <div class="user-aoi">Area of Interest</div>
+            <div class="user-gender">Gender</div>
+        </div>
+        <div class="table-row" 
+        data-user-item
+        [attr.data-user-uid]="user.id"
+        [attr.data-user-name]="user.firstName + ' ' + user.lastName"
+        [attr.data-user-email]="user.email"
+        [style.width]="tableMainBlock.scrollWidth + 'px'"
+        *ngFor="let user of (users$ | async)">
+            <div class="user-sr-no">{{ user.id }}</div>
+            <div class="user-first-name">{{ user.firstName }}</div>
+            <div class="user-last-name">{{ user.lastName }}</div>
+            <div class="user-email-id">{{ user.email }}</div>
+            <div class="user-enrolled-workshop">
+                <div *ngFor="let wid of user.wids">{{ wid }}</div>
+            </div>
+            <div class="user-profession">{{ user.profession?.name }}</div>
+            <div class="user-aoi">
+                <div *ngFor="let interest of user.areaOfInterest">{{ interest.name }}</div>
+            </div>
+            <div class="user-gender">{{ user.gender?.name }}</div>
+        </div>
+    </div>
+    <div class="table-paginator">
+        <div class="item-numbers-container">
+            <div class="item-numbers-text">Items per page</div>
+            <input 
+            [(ngModel)]="pageSize"
+            (change)="queryChanged()"
+            type="text" 
+            autocomplete="off"
+            class="item-numbers-input w-input" 
+            name="item-numbers" 
+            placeholder="10" 
+            id="item-numbers"/>
+        </div>
+        <div class="current-page-container">
+            <button type="button" class="svg paginator-svg" (click)="paginateBefore()"></button>
+            <div class="page-number">{{ currentPage }}</div>
+            <button type="button" class="svg paginator-svg" (click)="paginateAfter()"></button>
+        </div>
+    </div>
+</div>

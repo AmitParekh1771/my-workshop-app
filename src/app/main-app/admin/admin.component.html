@@ -1,0 +1,20 @@
+<div class="app-body">
+    <div class="section padding-50-top-bottom">
+        <div class="outer-container-864">
+            <app-score-container [scores]="[
+                {number: workshopService.queryWorkshopCount, title: 'Workshops'},
+                {number: userService.queryUserCount, title: 'Users'},
+                {number: creatorService.queryCreatorCount, title: 'Creators'},
+                {number: adminService.queryAdminCount, title: 'Admins'}
+            ]"></app-score-container>
+        </div>
+    </div>
+    <div class="section padding-50-top-bottom">
+        <div class="outer-container-1360 admin-dashboard-container">
+            <app-workshop-table></app-workshop-table>
+            <app-user-table></app-user-table>
+            <app-creator-table></app-creator-table>
+            <app-admin-table></app-admin-table>
+        </div>
+    </div>
+</div>

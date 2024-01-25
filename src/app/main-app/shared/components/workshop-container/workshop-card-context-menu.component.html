@@ -1,0 +1,17 @@
+<div class="workshop-status-option-block" 
+(contextmenu)="$event.preventDefault()">
+    <div class="workshop-status-option-item" 
+    *ngFor="let status of selectItems"
+    (click)="updateStatus(status)">
+        <div class="workshop-status-option-svg">{{ data.status.id == status.id ? '' : ''}}</div>
+        <div>{{ status.name }}</div>
+    </div>
+    <div class="workshop-status-option-item launch-bg" (click)="launchAgain()">
+        <div class="workshop-status-option-solid-svg"></div>
+        <div>Launch again</div>
+    </div>
+    <div class="workshop-status-option-item danger-bg" (click)="deleteWorkshop()">
+        <div class="workshop-status-option-solid-svg"></div>
+        <div>Delete</div>
+    </div>
+</div>

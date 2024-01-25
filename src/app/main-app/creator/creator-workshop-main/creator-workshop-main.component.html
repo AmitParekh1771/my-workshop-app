@@ -1,0 +1,119 @@
+<form 
+[formGroup]="form"
+*ngIf="(workshopObj$ | async) as workshopObj"
+(keydown.enter)="$event.preventDefault();">
+    <div class="section workshop-setup-top-bar wf-section">
+        <div class="outer-container-1360 workshop-setup-container">
+            <app-workshop-setup 
+            formControlName="status"
+            [disableSaveAndRevert]="disableButton"
+            (launchAgain)="launchAgain()"
+            (deleteWorkshop)="deleteWorkshop()"
+            (saveChanges)="submit()"
+            (revertChanges)="revert()"></app-workshop-setup>
+        </div>
+    </div>
+    <div class="section padding-50-top-bottom workshop-cover wf-section"
+        [style.backgroundImage]="workshop.metaData.coverImage ? ('linear-gradient(90deg, #333, rgba(51, 51, 51, 0.3)), url('+ workshop.metaData.coverImage.embedUrl +')') : 'linear-gradient(90deg, #333, rgba(51, 51, 51, 0.3))'"
+        [style.backgroundColor]="workshop.metaData.bgColor || '#fff'">
+        <div class="outer-container-1360">
+            <div class="workshop-hero-description">
+                <div class="workshop-hero-title">{{ workshop.metaData.title }}</div>
+                <div class="workshop-hero-rating-and-author">
+                    <div class="workshop-hero-rating">🌟{{ rating | number: '1.1-1'}}/5 ({{ studentCount | number}})</div>
+                    <div class="vertical-line white-smoke-bg"></div>
+                    <div class="workshop-hero-instructor">{{ workshop.creators | itemToString:', ' }}</div>
+                </div>
+                <div class="workshop-hero-tag"
+                    *ngIf="workshop.metaData.tag"
+                    [ngClass]="{
+                        'popular': workshop.metaData.tag.name == 'POPULAR',
+                        'best-seller': workshop.metaData.tag.name == 'BEST SELLER',
+                        'trending': workshop.metaData.tag.name == 'TRENDING'
+                    }"
+                    >{{ workshop.metaData.tag.name }}</div>
+            </div>
+            <button type="button" 
+                class="workshop-hero-video-play-button w-button"
+                (click)="openDialog(workshop.metaData.coverVideo)"
+                ></button>
+            <app-workshop-meta 
+            formGroupName="metaData"
+            [courseId]="workshop.courseId"
+            ></app-workshop-meta>
+        </div>
+    </div>
+    <div class="section padding-50-bottom workshop-content-section wf-section">
+        <div class="outer-container-1360 workshop-main-container">
+            <div class="workshop-progress-container setup-progress-bar">
+                <div class="light-background">
+                    <div class="background-progress-bar" 
+                        [ngStyle]="{
+                            'backgroundColor': '#333',
+                            'width': completePercentage + '%'
+                        }">
+                        <div class="dark-progress-text">
+                            {{ currentDay > totalDays ? 'Completed' : 'Day ' + currentDay + ' / ' + totalDays}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="video-container setup-video-container">
+                <div style="padding-top:56.27659574468085%" class="w-video w-embed">
+                    <iframe class="embedly-embed" *ngIf="currentContent" [src]="currentContent.item.embedUrl | safe" scrolling="no" allowfullscreen title="Video"></iframe>
+                    <div *ngIf="!currentContent" class="video-unavailable">Sorry! Video unavailable</div>
+                </div>
+            </div>
+            <div class="workshop-course-container"
+                contentEdit
+                [courseId]="workshop.courseId"
+                formControlName="content"
+                >
+                <div *ngFor="let block of contentDoc.content; let blockIndex = index"
+                    class="content-segment"
+                    data-block-type="SEGMENT"
+                    [attr.data-block-index]="blockIndex"
+                    >
+                    <div class="content-segment-title">{{ block.item.title }}</div>
+                    <div class="segment-content-container">
+                        <div *ngFor="let contentItem of block.content; let contentIndex = index" 
+                            class="segment-content-item"
+                            [attr.data-content-type]="contentItem.type"
+                            [attr.data-content-index]="contentIndex"
+                            [attr.data-block-index]="blockIndex"
+                            (click)="onContentClick(contentItem)">
+                            <div class="svg" [ngSwitch]="contentItem.type">
+                                <div *ngSwitchCase="'ATTACHMENT'"></div>
+                                <div *ngSwitchCase="'EVENT'"></div>
+                                <div *ngSwitchDefault></div>
+                            </div>
+
+                            <div class="content-item-title">
+                                {{ contentItem.item.title }}
+                            </div>
+        
+                            <div [ngSwitch]="contentItem.type">
+                                <div *ngSwitchCase="'ATTACHMENT'" class="svg"></div>
+                                <div *ngSwitchDefault>
+                                    {{ contentItem.item.duration ? (+contentItem.item.duration * 1000 | date:'HH:mm:ss':'UTC') : '--:--:--' }}
+                                </div>
+                            </div>
+                            
+                            <div *ngIf="contentItem.status.isLocked" class="lock-container">
+                                <div class="lock-message">
+                                    {{ contentItem.status.lockMessage }}
+                                </div>
+                                <div class="svg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="block.status.isLocked" class="lock-container">
+                        <div class="lock-message">{{ block.status.lockMessage }}</div>
+                        <div class="svg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-manage-videos [courseId]="workshop.courseId"></app-manage-videos>
+</form>

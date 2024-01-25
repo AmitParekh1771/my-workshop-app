@@ -1,0 +1,48 @@
+<app-input-template>
+    <label [for]="name" class="field-label">
+        <ng-content select=".label"></ng-content>
+    </label>
+    <ng-container class="field-input">
+        <input 
+            class="field-input w-input" 
+            tabindex="-1"
+            [id]="name"
+            [type]="type" 
+            [name]="name"
+            [disabled]="disabled"
+            [readonly]="readonly"
+            [placeholder]="placeholder" 
+            [autocomplete]="autocomplete"
+            [(ngModel)]="inputText"
+            (blur)="setDate();"
+            (focus)="toggleDatepicker = true;"
+            (focusout)="$event.stopPropagation()"
+            (click)="focusDate()"
+            (keyup.enter)="setDate(); focusDate();"
+            />
+    </ng-container>
+    <ng-container class="field-svg">
+        <button 
+            class="field-svg" 
+            tabindex="-1"
+            type="button"
+            [disabled]="disabled"
+            (click)="focusDate()"
+            (mousedown)="toggleDatepicker = !toggleDatepicker;"
+            ></button>
+    </ng-container>
+    <ng-container class="select-option-container">
+        <div class="select-option-container" 
+            [hidden]="!(inputFocus && toggleDatepicker)">
+            <div class="fixed-bg" 
+                (click)="toggleDatepicker = false; inputFocus = false;"></div>
+            <div class="select-option-block">
+                <mat-calendar #datepicker
+                    [(selected)]="date"
+                    (mousedown)="mouseDownHappened = true;"
+                    (focusout)="$event.stopPropagation()"
+                    ></mat-calendar>
+            </div>
+        </div>
+    </ng-container>
+</app-input-template>

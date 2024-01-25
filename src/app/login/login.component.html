@@ -1,0 +1,36 @@
+<div class="login-page wf-section">
+  <div class="login-bg">
+    <div class="login-container">
+      <div class="login-title">Sign in</div>
+      <div>
+        Can't remember email &amp; password? No need. Authenticate in one tap.
+      </div>
+      <div class="login-method-container">
+        <div class="login-method microsoft-bg" (click)="microsoftSignin()">
+          <div class="brand-svg"></div>
+          <div class="brand-name">Microsoft</div>
+        </div>
+        <div class="login-method google-bg" (click)="googleSignin()">
+          <div class="brand-svg"></div>
+          <div class="brand-name">Google</div>
+        </div>
+        <div class="login-method facebook-bg" (click)="facebookSignin()">
+          <div class="brand-svg"></div>
+          <div class="brand-name">Facebook</div>
+        </div>
+        <div class="login-method github-bg" (click)="githubSignin()">
+          <div class="brand-svg"></div>
+          <div class="brand-name">Github</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="login-illustration-container">
+    <img
+      src="../../assets/images/login-illustration.png"
+      loading="lazy"
+      alt=""
+      class="login-illustration"
+    />
+  </div>
+</div>

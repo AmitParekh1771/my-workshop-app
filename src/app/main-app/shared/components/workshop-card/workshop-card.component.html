@@ -1,0 +1,39 @@
+<a *ngIf="workshop; else workshopLoader" [routerLink]="routerLink" class="workshop-item non-decorated-link w-inline-block">
+    <img [src]="workshop.metaData.coverImage ? workshop.metaData.coverImage.embedUrl : '/assets/sample-images/workshop-card-image.jpg'" loading="lazy" alt="workshop cover photo" class="workshop-card-cover-photo loader"/>
+    <div class="workshop-description-container">
+        <div class="workshop-title">{{ workshop.metaData.title }}</div>
+        <div class="workshop-author-rating-container">
+            <div>🌟{{ rating | number: '1.1-1' }}/5 ({{ studentCount | number}})</div>
+            <div>{{ workshop.creators | itemToString:', '}}</div>
+        </div>
+    </div>
+    <div class="workshop-action-block">
+        <div>{{ cardAction.text }}</div>
+        <div class="{{ cardAction.class }}">{{ cardAction.svg }}</div>
+    </div>
+    <div class="workshop-tag-container" *ngIf="workshop.metaData.tag">
+        <div class="workshop-tag-block"
+            [ngClass]="{
+                'trending': workshop.metaData.tag!.name == 'TRENDING',
+                'popular': workshop.metaData.tag!.name == 'POPULAR',
+                'best-seller': workshop.metaData.tag!.name == 'BEST SELLER'
+            }">{{ workshop.metaData.tag!.name }}</div>
+    </div>
+    <div class="workshop-timeline-container" *ngIf="showDeadline">
+        <div class="workshop-timeline-block">{{ deadlineMessage }}</div>
+    </div>
+</a>
+
+<ng-template #workshopLoader>
+    <div class="workshop-item non-decorated-link w-inline-block">
+        <div class="workshop-card-cover-photo loader" [style.height]="'180px'"></div>
+        <div class="workshop-description-container">
+            <div class="workshop-title loader" [style.height]="'22px'"></div>
+            <div class="loader" [style.height]="'40px'"></div>
+        </div>
+        <div class="workshop-action-block">
+            <div class="loader" [ngStyle]="{ 'height': '20px', 'width': '80%'}"></div>
+            <div class="loader" [ngStyle]="{ 'height': '20px', 'width': '20px'}"></div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,54 @@
+<app-input-template>
+    <label [for]="name" class="field-label">
+        <ng-content select=".label"></ng-content>
+    </label>
+    <ng-container class="field-input">
+        <input 
+            class="field-input w-input"
+            tabindex="-1"
+            [id]="name"
+            [type]="type" 
+            [name]="name"
+            [disabled]="disabled"
+            [readonly]="readonly"
+            [placeholder]="placeholder" 
+            [autocomplete]="autocomplete"
+            [ngModel]="inputText"
+            (ngModelChange)="checkText($event)"
+            (focus)="toggleItems = true;"
+            (keyup)="filterItems($event); inputFocus = true; toggleItems = true;"
+            (keyup.enter)="selectItem()"
+            (keyup.arrowup)="navigateItems(-1)"
+            (keyup.arrowdown)="navigateItems(1)"
+            />
+    </ng-container>
+    <ng-container class="field-svg">
+        <button 
+            class="field-svg" 
+            tabindex="-1"
+            type="button"
+            [disabled]="disabled"
+            (mousedown)="toggleItems = !toggleItems;"
+            ></button>
+    </ng-container>
+    <ng-container class="select-option-container">
+        <div class="select-option-container" 
+            [hidden]="!(inputFocus && toggleItems)">
+            <div class="fixed-bg" 
+                (click)="toggleItems = false; inputFocus = false;"></div>
+            <div class="select-option-block scrollable">
+                <ng-container #selectContainer></ng-container>
+                <ng-template #selectTemplate let-item="item">
+                    <div class="select-option-item" 
+                        [attr.data-item-id]="item?.id"
+                        [attr.data-item-name]="item?.name"
+                        (click)="selectItem(item);"
+                        (mousedown)="mouseDownHappened = true"
+                        >
+                        <div class="select-option-item-name">{{item?.name}}</div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </ng-container>
+</app-input-template>

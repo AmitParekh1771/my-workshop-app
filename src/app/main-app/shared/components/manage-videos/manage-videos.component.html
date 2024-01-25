@@ -1,0 +1,33 @@
+<div class="section manage-videos-container wf-section">
+    <div class="outer-container-1360">
+        <div class="manage-videos-header">Manage Videos<span title="Copy courseId" (click)="copyToClipboard()" class="copy-to-clipboard"></span></div>
+        <div class="manage-videos-block" (contextmenu)="onContextmenu($event)">
+            <label for="manageVideoUpload" class="add-workshop-container w-inline-block">
+                <div></div>
+                <input 
+                type="file" 
+                name="manageVideoUpload" 
+                id="manageVideoUpload"
+                [style.display]="'none'"
+                (change)="addVideo($event)">
+            </label>
+            <div class="manage-video-item" 
+            *ngFor="let video of videos"
+            [attr.data-video-uri]="video.uri"
+            [attr.data-embed-url]="video.player_embed_url">
+                <img
+                [src]="video.pictures.base_link"
+                loading="lazy"
+                alt="video thumbnail"
+                class="manage-videos-thumbnail loader"
+                />
+                <div class="manage-video-descp">
+                <div class="manage-video-title">{{ video.name }}</div>
+                <div>Duration: {{ video.duration * 1000 | date:'HH:mm:ss':'UTC' }}</div>
+                <div>Status: {{ video.status }}</div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>

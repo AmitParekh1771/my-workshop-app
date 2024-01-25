@@ -1,0 +1,50 @@
+<div class="side-nav-container user-select-none">
+    <nav class="side-nav wf-section" [class.nav-active]="isActive">
+        <a class="side-nav-option non-decorated-link w-inline-block"
+            (click)="toggle()">
+            <div class="side-nav-svg"></div>
+            <div class="side-nav-text">Menu</div>
+        </a>
+        <a class="side-nav-option non-decorated-link w-inline-block"
+            (click)="hideMenu()"
+            routerLink="account"
+            routerLinkActive="active-route">
+            <div class="side-nav-svg"></div>
+            <div class="side-nav-text">Account</div>
+        </a>
+        <a class="side-nav-option non-decorated-link w-inline-block"
+            (click)="hideMenu()"
+            routerLink="workshop"
+            routerLinkActive="active-route">
+            <div class="side-nav-svg"></div>
+            <div class="side-nav-text">Workshop</div>
+        </a>
+        <a class="side-nav-option non-decorated-link w-inline-block"
+            *ngIf="creatorAccess$ | async"
+            (click)="hideMenu()"
+            routerLink="creator"
+            routerLinkActive="active-route">
+            <div class="side-nav-svg"></div>
+            <div class="side-nav-text">Creator</div>
+        </a>
+        <a class="side-nav-option non-decorated-link w-inline-block"
+            *ngIf="adminAccess$ | async"
+            (click)="hideMenu()"
+            routerLink="admin"
+            routerLinkActive="active-route">
+            <div class="side-nav-svg"></div>
+            <div class="side-nav-text">Admin</div>
+        </a>
+        <a class="side-nav-option non-decorated-link w-inline-block"
+            (click)="signOut()">
+            <div class="side-nav-svg"></div>
+            <div class="side-nav-text">Logout</div>
+        </a>
+    </nav>
+    <div class="side-nav-bg" 
+        (click)="hideMenu()"
+        [ngClass]="{
+            'bg-active': isActive,
+            'bg-inactive': !isActive
+        }"></div>
+</div>

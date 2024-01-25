@@ -1,0 +1,122 @@
+.upload-container {
+    position: fixed;
+    left: 70px;
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9;
+    max-width: 400px;
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+.upload-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #dfdfdf;
+    font-weight: 700;
+}
+
+.upload-text {
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.upload-svg-box {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    min-height: 40px;
+    min-width: 40px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: 'Fa solid 900', sans-serif;
+    color: #333;
+    cursor: pointer;
+    -webkit-transition: all 300ms cubic-bezier(.215, .61, .355, 1);
+    transition: all 300ms cubic-bezier(.215, .61, .355, 1);
+}
+
+.upload-svg-box:hover {
+    background-color: #f6f6f6;
+}
+
+.upload-svg-box span {
+    position: absolute;
+}
+
+.progress-svg {
+    width: 25px;
+    height: 25px;
+    margin-top: -1px;
+}
+
+.upload-item-container {
+    overflow: auto;
+    max-height: 200px;
+    height: 200px;
+    background-color: #fff;
+    -webkit-transition: all 300ms cubic-bezier(.215, .61, .355, 1);
+    transition: all 300ms cubic-bezier(.215, .61, .355, 1);
+}
+
+.upload-item-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #fff;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.upload-item-text {
+    overflow: hidden;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.upload-byte {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 8px 15px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 3;
+    stroke: #4CC790;
+    stroke-linecap: round;
+    transition: all 1s ease-out;
+}

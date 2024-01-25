@@ -1,0 +1,51 @@
+<div class="context-menu-block">
+    <a href="/creator/{{ data.wid }}/{{ data.title.toLowerCase().split(' ').join('-') }}" target="_blank" class="svg open-workshop non-decorated-link"></a>
+    <app-text-input
+        name="workshopId"
+        autocomplete="off"
+        [readonly]="true"
+        [ngModel]="data.wid"
+        placeholder="OGaCFOMPXtCsYcWq4un2"
+        >
+        <ng-container class="label">
+            <span class="context-menu-label">WID</span>
+        </ng-container>
+    </app-text-input>
+    <app-text-input
+        name="title"
+        autocomplete="off"
+        [readonly]="true"
+        [ngModel]="data.title"
+        placeholder="Ethical Hacking Master Class"
+        >
+        <ng-container class="label">
+            <span class="context-menu-label">Title</span>
+        </ng-container>
+    </app-text-input>
+    <app-text-input
+        name="addCreator"
+        autocomplete="off"
+        placeholder="OGaCGfiwZnbglexfH6s9LIbq4un2"
+        [(ngModel)]="addCid"
+        >
+        <ng-container class="label">
+            <span class="context-menu-label">Add Creator</span>
+        </ng-container>
+    </app-text-input>
+    <app-text-input
+        name="removeCreator"
+        autocomplete="off"
+        placeholder="jG7w4xWiytakXwF5pfYaaPfD3Fy2"
+        [(ngModel)]="removeCid"
+        >
+        <ng-container class="label">
+            <span class="context-menu-label">Remove Creator</span>
+        </ng-container>
+    </app-text-input>
+    <div class="context-menu-button-container">
+        <div (click)="updateWorkshop()" 
+        class="context-menu-button save darken-hover">Save changes</div>
+        <div (click)="deleteWorkshop()" 
+        class="context-menu-button delete darken-hover">Delete workshop</div>
+    </div>
+</div>

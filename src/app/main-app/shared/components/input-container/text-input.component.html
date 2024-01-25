@@ -1,0 +1,20 @@
+<app-input-template>
+    <label [for]="name" class="field-label">
+        <ng-content select=".label"></ng-content>
+    </label>
+    <ng-container class="field-input">
+        <input 
+            class="field-input w-input" 
+            tabindex="-1"
+            [id]="name"
+            [type]="type" 
+            [name]="name"
+            [disabled]="disabled"
+            [readonly]="readonly"
+            [placeholder]="placeholder" 
+            [autocomplete]="autocomplete"
+            [ngModel]="value"
+            (ngModelChange)="value = $event ? $event : null"
+            />
+    </ng-container>
+</app-input-template>
