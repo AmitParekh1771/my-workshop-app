@@ -1,10 +1,10 @@
 import { tap } from 'rxjs/operators';
-import { ContentDoc, Item } from './../../shared/models/workshop.model';
-import { UploadService } from './../../shared/services/upload.service';
+import { ContentDoc, Item } from '../../shared/models/workshop.model';
+import { UploadService } from '../../shared/services/upload.service';
 import { Observable, Subscription } from 'rxjs';
 
-import { PopupAlertService, PopupConfirmService } from './../../shared/components/popup-container/popup-container.component';
-import { WorkshopService } from './../../shared/services/workshop.service';
+import { PopupAlertService, PopupConfirmService } from '../../shared/components/popup-container/popup-container.component';
+import { WorkshopService } from '../../shared/services/workshop.service';
 import { Content, Workshop } from '../../shared/models/workshop.model';
 import { Component, ElementRef, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

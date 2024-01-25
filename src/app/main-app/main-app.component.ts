@@ -4,7 +4,7 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './shared/services/auth.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { User } from './shared/models/user.model';
+import { Creator, User } from './shared/models/user.model';
 
 @Component({
   selector: 'app-main-app',
@@ -45,6 +45,15 @@ export class MainAppComponent implements OnInit {
         if(docSnapshot.exists) return;
         
         return docSnapshot.ref.set(newUser, {merge: true});
+      });
+      
+      const newCreator = Object.assign({}, new Creator(user.displayName!, user.email!));
+      
+      this.afs.doc<Creator>(`creators/${user.uid}`).get().toPromise()
+      .then(docSnapshot => {
+        if(docSnapshot.exists) return;
+        
+        return docSnapshot.ref.set(newCreator, {merge: true});
       });
 
       sub.unsubscribe();

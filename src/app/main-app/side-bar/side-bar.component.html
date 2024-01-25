@@ -20,7 +20,6 @@
             <div class="side-nav-text">Workshop</div>
         </a>
         <a class="side-nav-option non-decorated-link w-inline-block"
-            *ngIf="creatorAccess$ | async"
             (click)="hideMenu()"
             routerLink="creator"
             routerLinkActive="active-route">
