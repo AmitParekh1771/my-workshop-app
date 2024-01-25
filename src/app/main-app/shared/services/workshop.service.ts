@@ -42,14 +42,8 @@ export class WorkshopService extends FirebaseCache {
     );
   }
   
-  private _getContentDoc: {
-    [key: string]: Observable<ContentDoc | undefined>
-  } = { }
-
   private getContentDoc(id: string) {
-    if(id in this._getContentDoc) return this._getContentDoc[id];
-
-    return this._getContentDoc[id] = this.afs.doc<ContentDoc>(`workshops/${id}/content/0`).valueChanges().pipe(
+    return this.afs.doc<ContentDoc>(`workshops/${id}/content/0`).valueChanges().pipe(
       catchError(err => of(undefined)),
       tap(contentDoc => console.log(`content-${id} read`)),
       shareReplay(1)

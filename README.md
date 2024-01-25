@@ -1,27 +1,25 @@
-# MyWorkshopApp
+# My Workshop App - Online Workshop Hosting Platform
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+## Get creative, share your knowledge, and learn anything online!
 
-## Development server
+My Workshop App is a web application built with Angular and Firebase that lets you:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features:
 
-## Code scaffolding
+* **OAuth login:** Seamless sign-in with Google, Microsoft, or your preferred provider.
+* **Role-based access:** Creators manage their workshops, participants access learning content.
+* **Rich video lectures:** Integrate Vimeo videos and create a dynamic learning experience.
+* **Visual editor:** Design compelling workshop pages with ease, no coding required.
+* **Mobile-friendly:** Learn and create workshops from any device.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Get started today!
 
-## Build
+1. **Visit the app:** [https://my-workshop-app-v2.firebaseapp.com](https://my-workshop-app-v2.firebaseapp.com)
+2. **Create an account:** Sign up as a creator or participant.
+3. **Explore or create:** Discover workshops or share your knowledge with the world.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Let's make learning fun and accessible for everyone!**
 
-## Running unit tests
+**Additional Resources:**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* Contact: [mailto:parekhamit04@gmail.com](parekhamit04@gmail.com)
